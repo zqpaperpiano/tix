@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import csd.week4.review.Review;
+import ticket.Ticket;
 import lombok.*;
 
 

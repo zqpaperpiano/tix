@@ -1,7 +1,9 @@
+package ticket;
+
 import java.util.List;
 
 import javax.persistence.*;
-import csd.week4.book.Book;
+import venue.Venue;
 import lombok.*;
 
 @Entity
