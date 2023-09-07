@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 @RestController
 public class VenueController {
-    private VenueService venueService;
+    private VenueService VenueService;
 
     public VenueController(VenueService vs){
         this.VenueService = vs;
@@ -22,8 +24,8 @@ public class VenueController {
 
     
     @GetMapping("/venues")
-    public List<Ticket> getTickets(){
-        return VenueService.listTickets();
+    public List<Venue> getVenues(){
+        return VenueService.listVenues();
     }
 
     

@@ -1,4 +1,4 @@
-package csd.week4.venue;
+package venue;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -35,7 +35,7 @@ public class VenueServiceImpl implements VenueService {
     
     @Override
     public Venue updateVenue(Long id, Venue newVenueInfo){
-        return venues.findById(id).map(venue -> {venue.setTitle(newVenueInfo.getTitle());
+        return venues.findById(id).map(venue -> {venue.setVenue_name(newVenueInfo.getVenue_name());
             return venues.save(venue);
         }).orElse(null);
 
