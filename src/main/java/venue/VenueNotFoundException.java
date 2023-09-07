@@ -10,7 +10,7 @@ public class VenueNotFoundException extends RuntimeException{
      */
     private static final long serialVersionUID = 1L;
 
-    public BookNotFoundException(Long id) {
+    public VenueNotFoundException(Long id) {
         super("Could not find venue " + id);
     }
     
