@@ -18,7 +18,7 @@ public class TicketController {
 
     @GetMapping("/venues/{venueId}/tickets")
     public List<Ticket> getAllTicketsByBookId(@PathVariable (value = "venueId") Long venueId) {
-        if(!venue.existsById(venueId)) {
+        if(!venues.existsById(venueId)) {
             throw new VenueNotFoundException(venueId);
         }
         return tickets.findByVenueId(venueId);
