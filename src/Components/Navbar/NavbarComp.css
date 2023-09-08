@@ -24,6 +24,7 @@
     border-color: white;
     background-color: white;
     font-family: 'Poppins';
+    font-size: 20px;
 }
 
 .navbar .search-button:hover{

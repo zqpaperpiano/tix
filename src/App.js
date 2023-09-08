@@ -7,6 +7,10 @@ import EventsAll from './Events/EventsAll';
 import NavbarComp from './Components/Navbar/NavbarComp';
 import EventsMusic from './Events/EventsMusic';
 import EventsSports from './Events/EventsSports';
+import TaylorSwiftInfo from './TaylorSwiftInfo/TaylorSwiftInfo';
+import Details from './BuyingPage/Details';
+import Seating from './BuyingPage/Seating';
+import Payment from './BuyingPage/Payment';
 
 
 
@@ -18,7 +22,7 @@ function App() {
       </header>
       
       <main>
-        <EventsMusic/>
+        <Payment/>
       </main>
 
     </div>
