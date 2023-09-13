@@ -3,9 +3,10 @@ import { Navbar, Nav, Container, Form, Button, NavDropdown} from 'react-bootstra
 import './NavbarComp.css'
 
 
-export const NavbarComp = () => {
+export const NavbarComp = ({onRouteChange}) => {
+
   return (
-    <Navbar bg="black" variant="dark" className='navbar'>
+    <Navbar bg="black fixed-top" variant="dark" className='navbar'>
       <Container>
         <Navbar.Brand href="#home" className='Company'>TIX</Navbar.Brand>
   
@@ -16,17 +17,27 @@ export const NavbarComp = () => {
 
         
         <Nav className="ms-auto underline-on-hover">
-          <Nav.Link href="#home">Home</Nav.Link>
+          <Nav.Link onClick={() => {onRouteChange('AllEvents')}} href="#home">Home</Nav.Link>
 
           <NavDropdown title="Events" id="basic-nav-dropdown">
-            <NavDropdown.Item className="dropdownitem" href="#events-all">All</NavDropdown.Item>
-            <NavDropdown.Item className="dropdownitem" href="#events-music">Music</NavDropdown.Item>
-            <NavDropdown.Item  className="dropdownitem" href="#events-sports">Sports</NavDropdown.Item>
+            <NavDropdown.Item 
+            onClick={() => {onRouteChange('AllEvents')}}
+            className="dropdownitem" href="#events-all">All</NavDropdown.Item>
+            <NavDropdown.Item 
+            onClick={() => {onRouteChange('Music')}}
+            className="dropdownitem" href="#events-music">Music</NavDropdown.Item>
+            <NavDropdown.Item  
+            onClick={() => {onRouteChange('Sports')}}
+            className="dropdownitem" href="#events-sports">Sports</NavDropdown.Item>
           </NavDropdown>
 
           <Nav.Link href="#FAQ">FAQ</Nav.Link>
-          <Nav.Link href="#login">Login</Nav.Link>
-          <Nav.Link href="#signup">Sign Up</Nav.Link>
+          <Nav.Link 
+          onClick={() => {onRouteChange('Login')}}
+          href="#login">Login</Nav.Link>
+          <Nav.Link 
+          onClick={() => {onRouteChange('SignUp')}}
+          href="#signup">Sign Up</Nav.Link>
           </Nav>
       </Container>
     </Navbar>
