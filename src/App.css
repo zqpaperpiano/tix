@@ -1,0 +1,14 @@
+html, body, #app, #app>div {
+    height: 100vh
+  }
+
+.main-page{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 20% 80%;
+}
+
+
+.other-pages{
+    grid-row-start: 2;
+}

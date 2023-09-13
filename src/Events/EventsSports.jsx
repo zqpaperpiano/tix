@@ -1,6 +1,7 @@
 import React from "react";
 import "./EventsSports.css";
 import { Button } from 'react-bootstrap';
+import UFC from '../assets/UFC.jpeg'
 
 export const EventsSports = ({onRouteChange}) => {
   return (
@@ -13,7 +14,7 @@ export const EventsSports = ({onRouteChange}) => {
 
         <div className="UFC">
           <p className="text-wrapper-2">UFC | HOLLOWAY vs THE KOREAN ZOMBIE</p>
-          <img className="UFC-2" alt="Ufc" src="UFC.png" />
+          <img className="UFC-2" alt="Ufc" src={UFC} />
         </div>
 
       </div>

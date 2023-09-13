@@ -5,6 +5,10 @@
     font-family: 'Poppins';
 }
 
+.navbar .navbar-items{
+    padding-left: 20px;
+}
+
 .navbar .nav-link{
     color: white;
     font-size: 20px;

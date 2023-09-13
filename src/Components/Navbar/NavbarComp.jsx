@@ -16,7 +16,7 @@ export const NavbarComp = ({onRouteChange}) => {
         </Form>
 
         
-        <Nav className="ms-auto underline-on-hover">
+        <Nav className="ms-auto underline-on-hover navbar-items">
           <Nav.Link onClick={() => {onRouteChange('AllEvents')}} href="#home">Home</Nav.Link>
 
           <NavDropdown title="Events" id="basic-nav-dropdown">

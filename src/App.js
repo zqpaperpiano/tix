@@ -59,14 +59,22 @@ class App extends Component{
 
   render(){
     return (
-      <div className="App">
-        <header>
+      <div className="main-page">
+        <div className='navbar-top'>
+          <NavbarComp onRouteChange={this.onRouteChange} />
+        </div>
+
+
+        <div className="other-pages">
+          <SignUp onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
+        </div>
+        {/* <header>
           {this.onUserLogin()}
         </header>
         
         <main>
           {this.pageNavigation()}
-        </main>
+        </main> */}
       </div>
     );
   }
