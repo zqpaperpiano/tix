@@ -8,10 +8,6 @@ import EventsAll from './Events/EventsAll';
 import NavbarComp from './Components/Navbar/NavbarComp';
 import EventsMusic from './Events/EventsMusic';
 import EventsSports from './Events/EventsSports';
-import TaylorSwiftInfo from './TaylorSwiftInfo/TaylorSwiftInfo';
-import Details from './BuyingPage/Details';
-import Seating from './BuyingPage/Seating';
-import Payment from './BuyingPage/Payment';
 
 class App extends Component{
   constructor(){
@@ -32,16 +28,13 @@ class App extends Component{
     })
   }
 
-function App() {
-  return (
-    <div className="App">
-      <header>
-        <NavbarComp/>
-      </header>
-      
-      <main>
-        <Payment/>
-      </main>
+  onUserLogin(){
+    if(this.state.user.email != ''){
+      return <NavbarCompProfile onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
+    }else{
+      return <NavbarComp onRouteChange={this.onRouteChange} />
+    }
+  }
 
   onRouteChange = (route) => {
     this.setState({
@@ -67,13 +60,15 @@ function App() {
   render(){
     return (
       <div className="App">
-        <header>
+        <NavbarComp onRouteChange={this.onRouteChange} />
+        <SignUp onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
+        {/* <header>
           {this.onUserLogin()}
         </header>
         
         <main>
           {this.pageNavigation()}
-        </main>
+        </main> */}
       </div>
     );
   }
