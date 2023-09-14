@@ -1,8 +1,40 @@
 import React from "react";
-import { Component } from "react";
+import { Component, useState, useEffect } from "react";
 import "./SignUp.css";
+import axios from 'axios';
+
 
 class SignUp extends Component{
+    const [customerId, setId] = useState('');
+    const [fullName, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [mobile, setMobile] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    async function save(event){
+      event.preventDefault();
+      try {
+          await axios.post(
+              "http://localhost:8081/api/v1/customer/save",
+              {
+                  fullName: fullName,
+                  email: email,
+                  mobile: mobile,
+                  password: password,
+              });
+                  alert("Registration Successfull");
+                  setId("");
+                  setName("");
+                  setEmail("");
+                  setMobile("");
+                  setPassword("")
+                  Load();
+      } catch (err){
+          alert("Registration Failed")
+      }
+  }
+
   constructor(){
     super();
     this.state = ({
@@ -55,8 +87,18 @@ class SignUp extends Component{
 
   onClickSubmit(){
     if(this.state.samePassword === true){
-      this.props.loadUser(this.state.registerEmail);
-      this.props.onRouteChange('AllEvents');
+      try {
+        await this.save();
+        // Call any additional logic you need after successful registration here
+        // For example, you can redirect the user to another page.
+        this.props.loadUser(this.state.registerEmail);
+        this.props.onRouteChange('AllEvents');
+      } catch (err) {
+        // Handle any errors that may occur during registration here
+        // You can show an error message to the user or perform other error handling.
+        console.error(err);
+        alert("Registration Failed");
+      }
     }
   }
 
@@ -117,6 +159,7 @@ class SignUp extends Component{
           <p 
           onClick={() => {this.onClickLogin()}}
           className="text-wrapper-5 login-btm">Login Here</p>
+
           <input
           type="submit"
           onClick={() => {this.onClickSubmit()}}
