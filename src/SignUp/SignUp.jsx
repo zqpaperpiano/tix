@@ -5,36 +5,42 @@ import axios from 'axios';
 
 
 class SignUp extends Component{
-    const [customerId, setId] = useState('');
-    const [fullName, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [mobile, setMobile] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    mobile: '',
+    password: '',
+  });
 
-    async function save(event){
-      event.preventDefault();
-      try {
-          await axios.post(
-              "http://localhost:8081/api/v1/customer/save",
-              {
-                  fullName: fullName,
-                  email: email,
-                  mobile: mobile,
-                  password: password,
-              });
-                  alert("Registration Successfull");
-                  setId("");
-                  setName("");
-                  setEmail("");
-                  setMobile("");
-                  setPassword("")
-                  Load();
-      } catch (err){
-          alert("Registration Failed")
+  const [message, setMessage] = useState('');
+
+  const { fullName, email, mobile, password } = formData;
+
+  {/* Here is the logic, can use if you want, if dowan isok, i changed contact to mobile so that it syncs with backend */}
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('/api/customer/register', formData);
+
+      if (response.status === 200) {
+        setMessage('Registration successful');
+      } else {
+        setMessage('Registration failed');
       }
-  }
+    } catch (error) {
+      console.error('Registration error:', error);
+    }
+  };
 
+
+
+  
   constructor(){
     super();
     this.state = ({

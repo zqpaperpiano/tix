@@ -2,15 +2,47 @@ import React from "react";
 import { Component } from "react";
 import "./Login.css";
 
-class Login extends Component{
-  constructor(){
-    super();
-    this.state=({
-      loginEmail: '',
-      loginPassword: '',
-    })
-  }
 
+class Login extends Component{
+
+  {/* I used this logic for the login, can just see if u wan to use it */}
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [message, setMessage] = useState('');
+
+  const { email, password } = formData;
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('/api/customer/login', formData);
+
+      if (response.status === 200) {
+        const token = response.data;
+
+        // Store the token in local storage or a secure storage mechanism
+        localStorage.setItem('jwtToken', token);
+
+        setMessage('Login successful');
+      } else {
+        setMessage('Login failed');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+    }
+  };
+
+
+
+  
   onEmailChange = (event) => {
     this.setState({
       loginEmail: event.target.value
@@ -30,6 +62,7 @@ class Login extends Component{
   onClickLogin(){
     if(this.state.loginEmail != ''){
       this.props.loadUser(this.state.loginEmail);
+
       this.props.onRouteChange('AllEvents');
     }
   }

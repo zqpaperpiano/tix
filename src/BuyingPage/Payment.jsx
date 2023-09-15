@@ -2,10 +2,12 @@ import React from "react";
 import "./Payment.css";
 
 export const Payment = () => {
+  
+
   return (
     <div className="payment">
       <div className="div">
-      
+
         {/* Need to add a table with confirmation details */}
 
         <div className="text-wrapper">Payment</div>
