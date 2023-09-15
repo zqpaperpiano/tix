@@ -6,8 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.EventNotFoundException;
-import com.example.demo.EventRepository;
+import com.example.demo.Event.EventNotFoundException;
+import com.example.demo.Event.EventRepository;
 
 @RestController
 public class TicketController {
@@ -30,21 +30,34 @@ public class TicketController {
     @PostMapping("/events/{eventId}/tickets")
     public Ticket addTicket(@PathVariable (value = "eventId") Long eventId, @RequestBody Ticket tickets) {
         // using "map" to handle the returned Optional object from "findById(eventId)"
-        return tickets.findById(eventId).map(event ->{
+        return events.findById(eventId).map(event ->{
             ticket.setEvent(event);
             return tickets.save(ticket);
         }).orElseThrow(() -> new EventNotFoundException(eventId));
     }
 
-    @PutMapping("/events/{eventId}/tickets/{ticketId}")
-    public Ticket updateTicket(@PathVariable (value = "ticketId") Long eventId,
+    @PutMapping("/events/{eventId}/tickets/{ticketId}/sell")
+    public Ticket sellTicket(@PathVariable (value = "eventId") Long eventId,
                                  @PathVariable (value = "ticketId") Long ticketId,
                                  @Valid @RequestBody Ticket newTicket) {
         if(!events.existsById(eventId)) {
             throw new EventNotFoundException(eventId);
         }
         return tickets.findByIdAndEventId(ticketId, eventId).map(ticket -> {
-            ticket.setTicket(newTicket.getTicket());
+            ticket.setSold(true);
+            return tickets.save(ticket);
+        }).orElseThrow(() -> new TicketNotFoundException(ticketId));
+    }
+
+    @PutMapping("/events/{eventId}/tickets/{ticketId}/cancel")
+    public Ticket cancelTicket(@PathVariable (value = "eventId") Long eventId,
+                                 @PathVariable (value = "ticketId") Long ticketId,
+                                 @Valid @RequestBody Ticket newTicket) {
+        if(!events.existsById(eventId)) {
+            throw new EventNotFoundException(eventId);
+        }
+        return tickets.findByIdAndEventId(ticketId, eventId).map(ticket -> {
+            ticket.setSold(false);
             return tickets.save(ticket);
         }).orElseThrow(() -> new TicketNotFoundException(ticketId));
     }

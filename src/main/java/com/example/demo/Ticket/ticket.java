@@ -5,7 +5,7 @@ import javax.validation.constraints.*;
 
 import org.springframework.data.annotation.Id;
 
-import com.example.demo.Event.event;
+import com.example.demo.Event.Event;
 import lombok.*;
 
 @Entity
@@ -19,5 +19,6 @@ public class Ticket {
     int seat_num; //1 - 400
     private  @Id Long id;
     private Event event;
+    boolean sold;
 
 }
