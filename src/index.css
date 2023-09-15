@@ -2,7 +2,11 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+<<<<<<< HEAD
     sans-serif, 'Poppins';
+=======
+    sans-serif;
+>>>>>>> 948866ed17f750b5a013cb15929efe844a961da0
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

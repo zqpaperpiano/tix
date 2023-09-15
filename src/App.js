@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import './App.css';
 import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,10 +9,19 @@ import EventsAll from './Events/EventsAll';
 import NavbarComp from './Components/Navbar/NavbarComp';
 import EventsMusic from './Events/EventsMusic';
 import EventsSports from './Events/EventsSports';
+=======
+import React from "react";
+import { Component} from "react";
+import Login from './Components/Login/Login';
+import Register from "./Components/Register/Register";
+import 'tachyons';
+
+>>>>>>> 948866ed17f750b5a013cb15929efe844a961da0
 
 class App extends Component{
   constructor(){
     super();
+<<<<<<< HEAD
     this.state=({
       route: 'AllEvents',
       user: {
@@ -33,6 +43,10 @@ class App extends Component{
       return <NavbarCompProfile onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
     }else{
       return <NavbarComp onRouteChange={this.onRouteChange} />
+=======
+    this.state={
+      route: 'signin',
+>>>>>>> 948866ed17f750b5a013cb15929efe844a961da0
     }
   }
 
@@ -42,6 +56,7 @@ class App extends Component{
     })
   }
 
+<<<<<<< HEAD
   pageNavigation(){
     switch(this.state.route){
           case 'Login':
@@ -69,9 +84,23 @@ class App extends Component{
         <main>
           {this.pageNavigation()}
         </main> */}
+=======
+  render(){
+    return(
+      <div>
+        {
+          this.state.route === 'signin' ? 
+          <Login onRouteChange={this.onRouteChange} />
+          : <Register onRouteChange={this.onRouteChange} />
+        }
+>>>>>>> 948866ed17f750b5a013cb15929efe844a961da0
       </div>
     );
   }
 }
 
+<<<<<<< HEAD
 export default App;
+=======
+export default App;
+>>>>>>> 948866ed17f750b5a013cb15929efe844a961da0
