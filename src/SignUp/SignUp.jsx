@@ -11,7 +11,7 @@ class SignUp extends Component{
     mobile: '',
     password: '',
   });
-
+  
   const [message, setMessage] = useState('');
 
   const { fullName, email, mobile, password } = formData;
@@ -37,8 +37,6 @@ class SignUp extends Component{
       console.error('Registration error:', error);
     }
   };
-
-
 
   
   constructor(){
