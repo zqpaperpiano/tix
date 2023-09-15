@@ -28,7 +28,7 @@ public class TicketController {
     }
 
     @PostMapping("/events/{eventId}/tickets")
-    public Ticket addTicket(@PathVariable (value = "eventId") Long eventId, @RequestBody Ticket tickets) {
+    public Ticket addTicket(@PathVariable (value = "eventId") Long eventId, @RequestBody Ticket ticket) {
         // using "map" to handle the returned Optional object from "findById(eventId)"
         return events.findById(eventId).map(event ->{
             ticket.setEvent(event);

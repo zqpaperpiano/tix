@@ -16,9 +16,9 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Ticket {
-    int seat_num; //1 - 400
+    private int seat_num; //1 - 400
     private  @Id Long id;
     private Event event;
-    boolean sold;
+    private boolean sold = false;
 
 }
