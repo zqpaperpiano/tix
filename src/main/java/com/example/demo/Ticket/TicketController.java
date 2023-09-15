@@ -20,7 +20,7 @@ public class TicketController {
     }
 
     @GetMapping("/events/{eventId}/tickets")
-    public List<Tickets> getAllTicketsByEventId(@PathVariable (value = "eventId") Long eventId) {
+    public List<Ticket> getAllTicketsByEventId(@PathVariable (value = "eventId") Long eventId) {
         if(!events.existsById(eventId)) {
             throw new EventNotFoundException(eventId);
         }
@@ -28,7 +28,7 @@ public class TicketController {
     }
 
     @PostMapping("/events/{eventId}/tickets")
-    public Ticket addTicket(@PathVariable (value = "eventId") Long eventId, @Valid @RequestBody Ticket tickets) {
+    public Ticket addTicket(@PathVariable (value = "eventId") Long eventId, @RequestBody Ticket tickets) {
         // using "map" to handle the returned Optional object from "findById(eventId)"
         return tickets.findById(eventId).map(event ->{
             ticket.setEvent(event);
