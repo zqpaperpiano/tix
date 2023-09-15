@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+<<<<<<< HEAD
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+=======
+
+>>>>>>> 948866ed17f750b5a013cb15929efe844a961da0
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
