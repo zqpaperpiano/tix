@@ -1,6 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import "./SignUp.css";
+import PasswordStrengthBar from "react-password-strength-bar";
 
 class SignUp extends Component{
   constructor(){
@@ -54,7 +55,7 @@ class SignUp extends Component{
   }
 
   onClickSubmit(){
-    if(this.state.samePassword === true){
+    if(this.state.samePassword === true && this.state.registerPassword.length > 8){
       this.props.loadUser(this.state.registerEmail);
       this.props.onRouteChange('AllEvents');
     }
@@ -96,6 +97,9 @@ class SignUp extends Component{
                 <input 
                 onChange={this.onPasswordChange}
                 type="password" className="data-input" placeholder="Password"/>
+                <PasswordStrengthBar 
+                minLength={8}
+                password={this.state.registerPassword} />
               </div>
             </div>
 

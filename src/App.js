@@ -1,5 +1,5 @@
 import './App.css';
-import { Component } from 'react';
+import { Component, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarCompProfile from './Components/Navbar/NavbarCompProfile';
 import SignUp from './SignUp/SignUp';
@@ -27,46 +27,49 @@ class App extends Component{
       }
     })
   }
-
-  onUserLogin(){
+        
+  onUserLogin = () =>{
     if(this.state.user.email != ''){
       return <NavbarCompProfile onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
     }else{
       return <NavbarComp onRouteChange={this.onRouteChange} />
     }
   }
-
-  onRouteChange = (route) => {
-    this.setState({
-      route: route,
-    })
-  }
-
-  pageNavigation(){
+        
+  onRouteChange = (newRoute) => {
+     this.setState({
+      route: newRoute,
+     })   
+    }
+        
+  pageNavigation = () => {
     switch(this.state.route){
-          case 'Login':
-            return <Login onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
-          case 'SignUp':
-            return <SignUp onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
-          case 'AllEvents':
-            return <EventsAll onRouteChange={this.onRouteChange} />
-          case 'Music':
-            return <EventsMusic onRouteChange={this.onRouteChange} />  
-          case 'Sports':
-            return <EventsSports onRouteChange={this.onRouteChange} />
-        }
+      case 'Login':
+          return <Login onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
+      case 'SignUp':
+        return <SignUp onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
+      case 'AllEvents':
+        return <EventsAll onRouteChange={this.onRouteChange} />
+      case 'Music':
+        return <EventsMusic onRouteChange={this.onRouteChange} />  
+      case 'Sports':
+        return <EventsSports onRouteChange={this.onRouteChange} />
+    }
   }
+
+  
 
   render(){
     return (
       <div className="main-page">
         <div className='navbar-top'>
-          <NavbarComp onRouteChange={this.onRouteChange} />
+          {this.onUserLogin()}
+          {/* <NavbarComp onRouteChange={this.onRouteChange} /> */}
         </div>
 
-
         <div className="other-pages">
-          <SignUp onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
+          {this.pageNavigation()}
+          {/* <SignUp onRouteChange={this.onRouteChange} loadUser={this.loadUser}/> */}
         </div>
         {/* <header>
           {this.onUserLogin()}

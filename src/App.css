@@ -5,9 +5,8 @@ html, body, #app, #app>div {
 .main-page{
     height: 100vh;
     display: grid;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 15% 85%;
 }
-
 
 .other-pages{
     grid-row-start: 2;
